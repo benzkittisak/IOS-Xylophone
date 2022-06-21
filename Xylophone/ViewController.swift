@@ -49,6 +49,21 @@ class ViewController: UIViewController {
          */
 //        วิธีที่ 4 ใช้ guard let
         guard let title = sender.currentTitle else { return print("Error title is nil")}
+        
+//        เมื่อมีการกดปุ่มก็ set ให้มันจางลง
+        sender.alpha = 0.5
+        
+        /**
+            ทีนี้ปัญหาคือ ด้วยความที่เราไป set ให้มันจางเวลากด ทำให้มันจะจางไปตลอดไม่ยอมกลับมาไม่จาง แล้วจาทำไงล่ะทีนี้
+            เราก็จะแก้ด้วยการตั้งเวลาให้มันยังไงล่ะ
+         */
+        
+        
+//        หลังจากตั้งเวลาจากโค้ดด้านล่างแล้วมันก็จะแปลก ๆ หน่อยแต่ก็ได้เหมือนที่เค้าต้องการอยู่แหละ
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1.0
+        }
+        
         playSound(title)
     }
     
